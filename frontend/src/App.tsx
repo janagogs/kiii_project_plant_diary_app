@@ -28,7 +28,7 @@ function App() {
 
     const fetchPlants = async () => {
         try {
-            const res = await fetch('http://localhost:8080/api/plants');
+            const res = await fetch('/api/plants');
             const data: Plant[] = await res.json();
             setPlants(data);
         } catch (error) {
@@ -49,13 +49,13 @@ function App() {
 
         try {
             if (editingId !== null) {
-                await fetch(`http://localhost:8080/api/plants/${editingId}`, {
+                await fetch(`/api/plants/${editingId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(form),
                 });
             } else {
-                await fetch('http://localhost:8080/api/plants', {
+                await fetch('/api/plants', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(form),
@@ -70,7 +70,7 @@ function App() {
 
     const deletePlant = async (id: number) => {
         try {
-            await fetch(`http://localhost:8080/api/plants/${id}`, { method: 'DELETE' });
+            await fetch(`/api/plants/${id}`, { method: 'DELETE' });
             if (editingId === id) resetForm();
             fetchPlants();
         } catch (error) {

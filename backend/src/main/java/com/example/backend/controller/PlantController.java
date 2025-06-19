@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/plants")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://plant.local")
 public class PlantController {
 
     private final PlantRepository repository;
