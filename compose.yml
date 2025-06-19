@@ -1,0 +1,37 @@
+services:
+  mongo-db:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - plantdiary-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo-db
+    networks:
+     - plantdiary-network
+
+  frontend:
+    build:
+        context: ./frontend
+        dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+        - plantdiary-network
+
+volumes:
+  mongo-data:
+
+networks:
+  plantdiary-network:
