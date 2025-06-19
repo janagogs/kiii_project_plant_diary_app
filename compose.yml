@@ -9,9 +9,7 @@ services:
       - plantdiary-network
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: sofijarechkoska/plantdiary-backend:main-latest
     ports:
       - "8080:8080"
     depends_on:
@@ -20,9 +18,7 @@ services:
      - plantdiary-network
 
   frontend:
-    build:
-        context: ./frontend
-        dockerfile: Dockerfile
+    image: sofijarechkoska/plantdiary-frontend:main-latest
     ports:
       - "5173:80"
     depends_on:
