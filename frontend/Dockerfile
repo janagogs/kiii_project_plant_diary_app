@@ -1,5 +1,5 @@
 FROM node:18-alpine AS build
-LABEL authors="Sofija Rechkoska"
+LABEL authors="Jana Gogova"
 WORKDIR /app
 COPY package*.json ./
 RUN npm install

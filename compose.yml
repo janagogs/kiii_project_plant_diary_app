@@ -9,7 +9,7 @@ services:
       - plantdiary-network
 
   backend:
-    image: sofijarechkoska/plantdiary-backend:main-latest
+    image: janagogs/backend:latest
     ports:
       - "8080:8080"
     depends_on:
@@ -18,7 +18,7 @@ services:
      - plantdiary-network
 
   frontend:
-    image: sofijarechkoska/plantdiary-frontend:main-latest
+    image: janagogs/frontend:latest
     ports:
       - "5173:80"
     depends_on:

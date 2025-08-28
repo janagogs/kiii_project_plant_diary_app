@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo-db
-  namespace: plant-diary
+  namespace: kiii-project
 spec:
   selector:
     matchLabels:
