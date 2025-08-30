@@ -3,7 +3,7 @@ name: Docker CI/CD Pipeline
 on:
   push:
     branches:
-      - "*"
+      - "*"   # on any branch
 
 jobs:
   docker-build-and-push:
@@ -19,11 +19,6 @@ jobs:
       # --- Print build start time ---
       - name: Print build start time
         run: echo "Build started at $(date)"
-
-      # --- Set branch name ---
-      - name: Get branch name
-        id: vars
-        run: echo "branch_name=$(echo ${{ github.ref_name }} | tr '/' '-')" >> "$GITHUB_OUTPUT"
 
       # --- Setup Java за backend ---
       - name: Set up JDK for backend
@@ -55,8 +50,8 @@ jobs:
       # --- Debug Docker tags ---
       - name: Debug - print Docker tags
         run: |
-          echo "Backend tag: ${{ secrets.DOCKER_USERNAME }}/plantdiary-backend:${{ steps.vars.outputs.branch_name }}-latest"
-          echo "Frontend tag: ${{ secrets.DOCKER_USERNAME }}/plantdiary-frontend:${{ steps.vars.outputs.branch_name }}-latest"
+          echo "Backend tag: janagogs/backends:v2"
+          echo "Frontend tag: janagogs/frontend:v2"
 
       # --- Build & push backend Docker image ---
       - name: Build & push backend image
@@ -64,7 +59,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/plantdiary-backend:${{ steps.vars.outputs.branch_name }}-latest
+          tags: janagogs/backends:v2
 
       # --- Build & push frontend Docker image ---
       - name: Build & push frontend image
@@ -72,5 +67,5 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/plantdiary-frontend:${{ steps.vars.outputs.branch_name }}-latest
+          tags: janagogs/frontend:v2
 
