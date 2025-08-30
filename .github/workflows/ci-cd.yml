@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # --- Checkout со подмодули ---
+      # --- Checkout ---
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
@@ -50,7 +50,7 @@ jobs:
       # --- Debug Docker tags ---
       - name: Debug - print Docker tags
         run: |
-          echo "Backend tag: janagogs/backends:v2"
+          echo "Backend tag: janagogs/backend:v2"
           echo "Frontend tag: janagogs/frontend:v2"
 
       # --- Build & push backend Docker image ---
@@ -59,7 +59,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: janagogs/backends:v2
+          tags: janagogs/backend:v2
 
       # --- Build & push frontend Docker image ---
       - name: Build & push frontend image
