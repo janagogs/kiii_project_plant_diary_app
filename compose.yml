@@ -9,7 +9,7 @@ services:
       - plantdiary-network
 
   backend:
-    image: janagogs/backend:v2
+    image: janagogs/backends:v2
     ports:
       - "8080:8080"
     depends_on:
