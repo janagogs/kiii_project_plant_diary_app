@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: janagogs/frontend:latest
+          image: janagogs/frontend:v2
           ports:
             - containerPort: 80
